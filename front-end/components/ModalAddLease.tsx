@@ -5,14 +5,25 @@ import styles from '../styles/ModalAddLease.module.css';
 interface ModalAddLeaseProps {
   isOpen: boolean;
   onClose: () => void;
-  onAdd: (newLease: Lease) => void;
+  onAdd: (newLease: Lease) => void; // Ensure this matches the expected type
 }
 
 interface Lease {
-  customer: number;
-  car: number;
+  id: number;
+  customer: {
+    id: number;
+    name: string;
+  };
+  car: {
+    id: number;
+    model: string;
+    brand: string;
+    year: number;
+  };
   lease_start_date: string;
   lease_end_date: string;
+  amount: string;
+  mark_as_returned_from_lease: boolean;
 }
 
 interface Customer {
@@ -71,10 +82,21 @@ export default function ModalAddLease({ isOpen, onClose, onAdd }: ModalAddLeaseP
       return;
     }
     const newLease: Lease = {
-      customer: Number(customer),
-      car: Number(car),
+      id: 0, // This will be filled by the server
+      customer: {
+        id: Number(customer),
+        name: '', // This will be updated after fetching or handled by the server
+      },
+      car: {
+        id: Number(car),
+        model: '', // This will be updated after fetching or handled by the server
+        brand: '', // This will be updated after fetching or handled by the server
+        year: new Date().getFullYear(), // Example default value, adjust as needed
+      },
       lease_start_date: leaseStartDate,
       lease_end_date: leaseEndDate,
+      amount: '', // This will be filled by the server
+      mark_as_returned_from_lease: false,
     };
 
     try {
