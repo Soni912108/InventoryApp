@@ -15,6 +15,7 @@ export default function Dashboard() {
   const [modalOpen, setModalOpen] = useState(true); // Modal state
   const router = useRouter();
   const username = localStorage.getItem('username');
+  const [companies, setCompanies] = useState<any[]>([]); // Add a state for companies
 
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
@@ -26,7 +27,6 @@ export default function Dashboard() {
     }
   }, [router]);
 
-  // Effect to ensure the modal opens on initial load
   useEffect(() => {
     // Simulate an API call or check here if needed to determine if modal should be shown
     setModalOpen(true); // Ensure modal is open initially
@@ -54,6 +54,11 @@ export default function Dashboard() {
     setModalOpen(false);
   };
 
+  // Define the onAdd function
+  const handleAddCompany = (newCompany: any) => {
+    setCompanies([...companies, newCompany]);
+  };
+
   if (!token) {
     return null; // Return null while checking authentication
   }
@@ -67,7 +72,6 @@ export default function Dashboard() {
           <div className={styles.userGreeting}>Hello, {username}</div>
           <button onClick={() => handleNavigation('/profile')} className={styles.profileButton}>Profile</button>
         </div>
-        
 
         <div className={`${styles.mainContent}`}>
           <aside className={`${styles.sidebar} ${sidebarOpen ? styles.sidebarOpen : styles.sidebarClosed}`}>
@@ -112,12 +116,14 @@ export default function Dashboard() {
             </section>
           </main>
           {modalOpen && (
-            <ModalAddCompany isOpen={modalOpen} onClose={closeModal}
+            <ModalAddCompany 
+              isOpen={modalOpen} 
+              onClose={closeModal}
+              onAdd={handleAddCompany} // Pass the onAdd function
             />
           )}
         </div>
       </div>
     </div>
-    
   );
 }
