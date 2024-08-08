@@ -1,0 +1,30 @@
+/* styles/SelectRows.module.css */
+  
+.selectionActions {
+    display: flex;
+    align-items: center;
+  }
+  
+.selectButton, .cancelButton, .deleteSelectedButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-right: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+  
+.cancelButton {
+    background-color: #dc3545;
+}
+  
+.deleteSelectedButton {
+    background-color: #28a745;
+}
+  
+  .selectButton:hover, .cancelButton:hover, .deleteSelectedButton:hover {
+    opacity: 0.8;
+  }
+

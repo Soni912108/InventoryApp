@@ -1,0 +1,25 @@
+/* styles/SearchInput.module.css */
+
+
+.searchInputContainer {
+  display: flex;
+  align-items: center;
+  border: 2px solid #4a5568; /* Slate-500 */
+  padding: 0.5rem;
+  border-radius: 15px;
+  gap: 0.5rem;
+  background-color: white;
+}
+
+.searchInput {
+  background: transparent;
+  outline: none;
+  border: none;
+  width: 100%;
+  padding: 0.75rem 1rem;
+}
+
+.searchIcon {
+  font-size: 1.25rem; /* Icon size */
+  color: #4a5568; /* Slate-500 */
+}

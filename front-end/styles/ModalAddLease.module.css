@@ -1,0 +1,101 @@
+/* ModalAddLease.module.css */
+
+/* General Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal Content Styles */
+.modalContent {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%; /* Adjusted width for better responsiveness */
+  max-width: 600px; /* Increased max-width for a larger modal */
+  max-height: 80vh; /* Limit height to prevent overflowing */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Title Styles */
+.modalContent h2 {
+  text-align: center;
+  margin-top: 0; /* Ensure no extra margin at the top */
+  margin-bottom: 20px; /* Increase margin for better spacing */
+}
+
+/* Form Styles */
+.modalContent form {
+  display: flex;
+  flex-direction: column; /* Stack form elements vertically */
+  gap: 15px; /* Spacing between form elements */
+}
+
+/* Label Styles */
+.modalContent label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Input and Select Styles */
+.modalContent input[type="number"],
+.modalContent input[type="date"],
+.modalContent select {
+  width: 100%; /* Full width for inputs and selects */
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Button Group Styles */
+.buttonGroup {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/* Add Button Styles */
+.addButton {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.addButton:hover {
+  background-color: #218838;
+}
+
+/* Cancel Button Styles */
+.cancelButton {
+  background-color: #dc3545;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.cancelButton:hover {
+  background-color: #c82333;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .modalContent {
+    width: 95%;
+  }
+}

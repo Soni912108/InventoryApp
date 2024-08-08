@@ -1,0 +1,100 @@
+/* General Modal Styles */
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scrolling if needed */
+  background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Content Styles */
+.modalContent {
+  background-color: white;
+  padding: 20px; /* Increased padding for better spacing */
+  border-radius: 8px;
+  width: 90%; /* Adjusted width for better responsiveness */
+  max-width: 700px; /* Increased max-width for a larger modal */
+  max-height: 80vh; /* Limit height to prevent overflowing */
+  overflow-y: auto; /* Enable vertical scrolling */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+/* Close Button Styles */
+.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Title Styles */
+.modalContent h2 {
+  text-align: center;
+  margin-bottom: 20px; /* Increased margin for better separation */
+}
+
+/* Form Styles */
+.modalContent form {
+  display: flex;
+  flex-direction: column; /* Stack form elements vertically */
+  gap: 15px; /* Spacing between form elements */
+}
+
+/* Label Styles */
+.modalContent label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Input and Textarea Styles */
+.modalContent input[type="text"],
+.modalContent input[type="number"],
+.modalContent textarea {
+  width: 100%; /* Full width for inputs and textareas */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Checkbox Styles */
+.modalContent input[type="checkbox"] {
+  margin-top: 10px;
+}
+
+/* Button Styles */
+.modalContent button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: flex-start; /* Align button to the left */
+}
+
+.modalContent button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .modalContent {
+    width: 95%;
+  }
+
+  .modalContent input[type="text"],
+  .modalContent input[type="number"],
+  .modalContent textarea {
+    width: 100%; /* Ensure full width on small screens */
+  }
+}

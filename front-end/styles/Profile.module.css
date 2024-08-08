@@ -1,0 +1,90 @@
+/* styles/Profile.module.css */
+
+.profileContainer {
+    padding: 20px;
+  }
+  
+  .profileInfo {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profileInfo h2 {
+    margin-bottom: 10px;
+  }
+  
+  .profileInfo p {
+    margin: 5px 0;
+  }
+  
+  .changePasswordButton {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .changePasswordButton:hover {
+    background-color: #005bb5;
+  }
+  
+  .error {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modalContent {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+  }
+  
+  .modalContent h3 {
+    margin-bottom: 15px;
+  }
+  
+  .modalContent label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .modalContent input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .modalButton {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .modalButton:hover {
+    background-color: #005bb5;
+  }
+  

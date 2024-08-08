@@ -1,0 +1,72 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Ensure container takes full viewport height */
+    padding: 20px;
+    background: linear-gradient(to bottom right, #f0f8ff, #d9e8f5); /* Same background as login page */
+    font-family: 'Inter', sans-serif; /* Apply the Inter font */
+    overflow: hidden;
+  }
+  
+  .header {
+    font-size: 3rem;
+    color: #007bff;
+    margin-bottom: 40px;
+  }
+  
+  .error {
+    color: red;
+    margin-bottom: 20px;
+  }
+  
+  .inputContainer {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .button {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 20px;
+    margin: 20px 0;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #005bb5;
+  }
+  
+  .link {
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 20px;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  

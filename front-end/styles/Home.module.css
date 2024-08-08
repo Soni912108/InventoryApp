@@ -1,0 +1,129 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Ensure container takes full viewport height */
+  padding: 0 20px; /* Adjusted padding */
+  box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  background-color: #007bff;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-bottom: 20px; /* Slight margin to separate header from main content */
+  box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-size: 3rem; /* Increase the logo font size */
+  font-weight: bold;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.link {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: white;
+  color: #007bff;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.link:hover {
+  background-color: #005bb5;
+  color: white;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+}
+
+.hero {
+  margin-bottom: 40px;
+}
+
+.hero h2 {
+  font-size: 3rem; /* Increase the hero title font size */
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.heroButton {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.heroButton:hover {
+  background-color: #005bb5;
+}
+
+.benefits {
+  margin-top: 40px;
+  text-align: center; /* Ensure benefits section is centered */
+}
+
+.benefits h3 {
+  font-size: 2rem; /* Increase the benefits title font size */
+  margin-bottom: 20px;
+}
+
+.benefits ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column; /* Arrange items in a column */
+  gap: 20px;
+}
+
+.benefits li {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  gap: 10px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+  background-color: #007bff;
+  color: white;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-top: auto; /* Push footer to the bottom */
+  box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+}
