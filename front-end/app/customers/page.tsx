@@ -16,7 +16,7 @@ interface Customer {
   id: number;
   name: string;
   email: string;
-  phone_number: string;
+  phone_number: number;
   address: string;
   selected?: boolean;
 }
