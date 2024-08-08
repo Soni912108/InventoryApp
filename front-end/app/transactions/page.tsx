@@ -51,18 +51,12 @@ export default function TransactionsPage() {
 
   const router = useRouter();
 
-  useEffect(() => {
-        // Access localStorage on client side only
-        const storedToken = localStorage.getItem('token');
-        setToken(storedToken);
-    }, []); // Empty dependency array ensures this runs only once on mount
-
   const handleNavigation = (path: string) => {
     setLoading(true);
     router.push(path);
   };
-  
-  const fetchTransactions = async () => {
+
+  const fetchTransactions =  async (authToken: string)  => {
     
     if (!token) {
       setError('You are not authenticated. Please log in.');
@@ -72,7 +66,7 @@ export default function TransactionsPage() {
     try {
       const response = await axios.get('http://localhost:8000/crm/api/transactions/', {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${authToken}`,
         },
         params: {
           page: currentPage,
@@ -104,8 +98,16 @@ export default function TransactionsPage() {
   };
 
   useEffect(() => {
-    fetchTransactions();
-  }, [currentPage, rowsPerPage]);
+    // Access localStorage on client side only
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
+      setToken(storedToken);
+      fetchTransactions(storedToken); // Fetch transactions after setting the token
+    } else {
+      setError('You are not authenticated. Please log in.');
+      router.push('/login');
+    }
+  }, [currentPage, rowsPerPage]); 
 
   const handleAddTransaction = (newTransaction: Transaction) => {
     setTransactions([...transactions, newTransaction]);
