@@ -9,6 +9,7 @@ interface ModalAddCustomerProps {
 }
 
 interface Customer {
+  id: string;
   name: string;
   email: string;
   phone_number: string;
@@ -16,6 +17,7 @@ interface Customer {
 }
 
 export default function ModalAddCustomer({ isOpen, onClose, onAdd }: ModalAddCustomerProps) {
+  const [id, setID] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone_number, setPhoneNumber] = useState('');
@@ -27,6 +29,7 @@ export default function ModalAddCustomer({ isOpen, onClose, onAdd }: ModalAddCus
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newCustomer: Customer = { 
+      id,
       name, 
       email, 
       phone_number,
@@ -54,6 +57,16 @@ export default function ModalAddCustomer({ isOpen, onClose, onAdd }: ModalAddCus
         <h2 className={styles.modalTitle}>Add New Customer</h2>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <form onSubmit={handleSubmit} className={styles.modalForm}>
+        <label className={styles.modalFormLabel}>
+            ID:
+            <input
+              type="number"
+              value={id}
+              onChange={(e) => setID(e.target.value)}
+              required
+              className={styles.modalFormInput}
+            />
+          </label>
           <label className={styles.modalFormLabel}>
             Name:
             <input
