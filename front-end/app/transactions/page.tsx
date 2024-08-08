@@ -46,14 +46,22 @@ export default function TransactionsPage() {
   const [totalTransactions, setTotalTransactions] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10); // Default to 10 rows per page
-  const token =localStorage.getItem('token');
+  // State for token
+  const [token, setToken] = useState<string | null>(null);
+
   const router = useRouter();
+
+  useEffect(() => {
+        // Access localStorage on client side only
+        const storedToken = localStorage.getItem('token');
+        setToken(storedToken);
+    }, []); // Empty dependency array ensures this runs only once on mount
 
   const handleNavigation = (path: string) => {
     setLoading(true);
     router.push(path);
   };
-
+  
   const fetchTransactions = async () => {
     
     if (!token) {
