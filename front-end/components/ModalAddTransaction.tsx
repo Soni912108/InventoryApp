@@ -9,9 +9,19 @@ interface ModalAddTransactionProps {
 }
 
 interface Transaction {
-  customer: number;
-  car: number;
-  amount: number;
+  id: number;
+  customer: {
+    id: number;
+    name: string;
+  };
+  car: {
+    id: number;
+    brand: string;
+    model: string;
+    year: number;
+  };
+  amount: string;
+  receipt: string;
   date: string;
 }
 
@@ -66,20 +76,36 @@ export default function ModalAddTransaction({ isOpen, onClose, onAdd }: ModalAdd
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (isNaN(parseFloat(amount)) || parseFloat(amount) <= 0) {
+      setError('Amount must be a positive number');
+      return;
+    }
+
     const newTransaction: Transaction = {
-      customer: Number(customer),
-      car: Number(car),
-      amount: parseFloat(amount),
+      id: 0, // This field will be updated by the server
+      customer: {
+        id: Number(customer),
+        name: '', // This will be updated after fetching or handled by the server
+      },
+      car: {
+        id: Number(car),
+        brand: '', // This will be updated after fetching or handled by the server
+        model: '', // This will be updated after fetching or handled by the server
+        year: new Date().getFullYear(), // Example default value, adjust as needed
+      },
+      amount,
+      receipt: '', // This field will be updated by the server
       date,
     };
 
     try {
       const response = await axios.post('http://localhost:8000/crm/api/add_transaction/', newTransaction, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json'
         },
       });
+      console.log('Response data:', response.data);
       onAdd(response.data);
       onClose();
     } catch (err) {
@@ -100,9 +126,7 @@ export default function ModalAddTransaction({ isOpen, onClose, onAdd }: ModalAdd
             <select value={customer} onChange={(e) => setCustomer(Number(e.target.value))} required>
               <option value="">Select Customer</option>
               {customers.map((customer) => (
-                <option key={customer.id} value={customer.id}>
-                  {customer.name}
-                </option>
+                <option key={customer.id} value={customer.id}>{customer.name}</option>
               ))}
             </select>
           </label>
@@ -121,6 +145,7 @@ export default function ModalAddTransaction({ isOpen, onClose, onAdd }: ModalAdd
             Amount:
             <input
               type="number"
+              step="0.01"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               required
@@ -136,12 +161,8 @@ export default function ModalAddTransaction({ isOpen, onClose, onAdd }: ModalAdd
             />
           </label>
           <div className={styles.buttonGroup}>
-            <button type="submit" className={styles.addButton}>
-              Add Transaction
-            </button>
-            <button type="button" className={styles.cancelButton} onClick={onClose}>
-              Cancel
-            </button>
+            <button type="submit" className={styles.addButton}>Add Transaction</button>
+            <button type="button" className={styles.cancelButton} onClick={onClose}>Cancel</button>
           </div>
         </form>
       </div>
