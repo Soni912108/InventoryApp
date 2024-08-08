@@ -6,7 +6,7 @@ interface ModalUpdateLeaseProps {
   isOpen: boolean;
   onClose: () => void;
   lease: Lease;
-  onUpdate: (updatedLease: Lease) => void;
+  onEdit: (updatedLease: Lease) => void;
 }
 
 interface Lease {
@@ -24,9 +24,10 @@ interface Lease {
   amount: string;
   lease_start_date: string;
   lease_end_date: string;
+  mark_as_returned_from_lease: boolean;
 }
 
-export default function ModalUpdateLease({ isOpen, onClose, lease, onUpdate }: ModalUpdateLeaseProps) {
+export default function ModalUpdateLease({ isOpen, onClose, lease, onEdit }: ModalUpdateLeaseProps) {
   const [customer, setCustomer] = useState<number | ''>(lease.customer.id);
   const [car, setCar] = useState<number | ''>(lease.car.id);
   const [amount, setAmount] = useState(lease.amount);
@@ -80,6 +81,7 @@ export default function ModalUpdateLease({ isOpen, onClose, lease, onUpdate }: M
       amount,
       lease_start_date: leaseStartDate,
       lease_end_date: leaseEndDate,
+      mark_as_returned_from_lease: false,
     };
 
     try {
@@ -88,7 +90,7 @@ export default function ModalUpdateLease({ isOpen, onClose, lease, onUpdate }: M
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
       });
-      onUpdate(response.data);
+      onEdit(response.data);
       onClose();
     } catch (err) {
       console.error('Error updating lease:', err);
