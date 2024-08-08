@@ -130,7 +130,6 @@ export default function TransactionsPage() {
   };
 
   const handleDeleteSelectedTransactions = async () => {
-    c
     if (!confirm('Are you sure you want to delete the selected transactions?')) return;
     try {
       for (const transaction of selectedTransactions) {
