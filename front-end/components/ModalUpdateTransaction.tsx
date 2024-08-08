@@ -6,7 +6,7 @@ interface ModalEditTransactionProps {
   isOpen: boolean;
   onClose: () => void;
   transaction: Transaction;
-  onUpdate: (updatedTransaction: Transaction) => void;
+  onEdit: (updatedTransaction: Transaction) => void;
 }
 
 interface Transaction {
@@ -23,9 +23,10 @@ interface Transaction {
   };
   amount: string;
   date: string;
+  receipt: string;
 }
 
-export default function ModalEditTransaction({ isOpen, onClose, transaction, onUpdate }: ModalEditTransactionProps) {
+export default function ModalEditTransaction({ isOpen, onClose, transaction, onEdit }: ModalEditTransactionProps) {
   const [customer, setCustomer] = useState<number | ''>(transaction.customer.id);
   const [car, setCar] = useState<number | ''>(transaction.car.id);
   const [amount, setAmount] = useState(transaction.amount);
@@ -76,7 +77,7 @@ export default function ModalEditTransaction({ isOpen, onClose, transaction, onU
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
-      onUpdate(response.data);
+      onEdit(response.data);
       onClose();
     } catch (err) {
       setError('Error updating transaction');
