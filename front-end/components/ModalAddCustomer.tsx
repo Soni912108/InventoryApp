@@ -12,9 +12,10 @@ interface Customer {
   id: number;
   name: string;
   email: string;
-  phone_number: string;
+  phone_number: number; // Make sure it's a number
   address: string;
 }
+
 
 export default function ModalAddCustomer({ isOpen, onClose, onAdd }: ModalAddCustomerProps) {
   const [name, setName] = useState('');
@@ -30,7 +31,7 @@ export default function ModalAddCustomer({ isOpen, onClose, onAdd }: ModalAddCus
     const newCustomer: Omit<Customer, 'id'> = { 
       name, 
       email, 
-      phone_number,
+      phone_number: Number(parseInt(phone_number)),
       address,
     };
 
